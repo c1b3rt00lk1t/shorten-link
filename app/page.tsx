@@ -44,7 +44,11 @@ const Home = () => {
                 size="large"
                 value={originalUrl}
                 onChange={(e) => {
-                  setOriginalUrl(e.target.value);
+                  setOriginalUrl(
+                    e.target.value
+                      .replace("https://", "")
+                      .replace("http://", "")
+                  );
                   setShortenedUrl("");
                 }}
               />

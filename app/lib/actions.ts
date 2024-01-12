@@ -10,3 +10,9 @@ export async function insertLinkToShorten(
   const result = await query;
   return result;
 }
+
+export async function getLinkToRedirect(shortId: string) {
+  const query = sql`SELECT url FROM shorten_link WHERE short_id = ${shortId}`;
+  const result = await query;
+  return result;
+}

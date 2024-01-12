@@ -1,10 +1,23 @@
 "use client";
-import { Typography, Col, Input, Row, Button, Space } from "antd";
+import { Typography, Col, Input, Row, Button, Space, Form } from "antd";
 import styles from "./page.module.css";
 const { Compact } = Space;
 const { Title } = Typography;
+import { useState } from "react";
+import { insertLinkToShorten } from "./lib/actions";
+import { nanoid } from "nanoid";
 
 const Home = () => {
+  const [originalUrl, setOriginalUrl] = useState("");
+  const handleLinkSubmit = async () => {
+    const shortId = nanoid(8);
+    try {
+      await insertLinkToShorten(originalUrl, shortId);
+    } catch (e) {
+      console.log(e);
+    }
+    console.log(originalUrl);
+  };
   return (
     <>
       <Row justify="start" align="top" className={styles.firstHeightRow}>
@@ -22,8 +35,10 @@ const Home = () => {
                 placeholder="Enter URL"
                 className={styles.urlInput}
                 size="large"
+                value={originalUrl}
+                onChange={(e) => setOriginalUrl(e.target.value)}
               />
-              <Button size="large" type="primary">
+              <Button size="large" type="primary" onClick={handleLinkSubmit}>
                 Submit
               </Button>
             </Compact>

@@ -6,6 +6,7 @@ const { Title } = Typography;
 import { useState } from "react";
 import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
+import Link from "next/link";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -17,7 +18,7 @@ const Home = () => {
     try {
       const result = await insertLinkToShorten(originalUrl, shortId);
       if (result.rowCount === 0) throw new Error("No rows inserted");
-      setShortenedUrl(baseUrl + "/" + shortId);
+      setShortenedUrl("/" + shortId);
       console.log("Rows inserted:", result.rowCount);
     } catch (error) {
       console.error("Error:", error);
@@ -54,7 +55,8 @@ const Home = () => {
           </Row>
           {shortenedUrl && (
             <Typography.Paragraph>
-              Shortened URL: <a href={shortenedUrl}>{shortenedUrl}</a>
+              Shortened URL:{" "}
+              <Link href={shortenedUrl}>{baseUrl + shortenedUrl}</Link>
             </Typography.Paragraph>
           )}
         </Col>

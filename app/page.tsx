@@ -42,7 +42,10 @@ const Home = () => {
                 className={styles.urlInput}
                 size="large"
                 value={originalUrl}
-                onChange={(e) => setOriginalUrl(e.target.value)}
+                onChange={(e) => {
+                  setOriginalUrl(e.target.value);
+                  setShortenedUrl("");
+                }}
               />
               <Button size="large" type="primary" onClick={handleLinkSubmit}>
                 Submit

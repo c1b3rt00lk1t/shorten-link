@@ -8,14 +8,16 @@ import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
 
 const Home = () => {
-  const baseUrl = process.env.BASE_URL || "";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
   const handleLinkSubmit = async () => {
     const shortId = nanoid(8);
-    setShortenedUrl(baseUrl + shortId);
+
     try {
       const result = await insertLinkToShorten(originalUrl, shortId);
+      if (result.rowCount === 0) throw new Error("No rows inserted");
+      setShortenedUrl(baseUrl + "/" + shortId);
       console.log("Rows inserted:", result.rowCount);
     } catch (error) {
       console.error("Error:", error);

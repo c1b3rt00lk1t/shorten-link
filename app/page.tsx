@@ -8,9 +8,12 @@ import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
 
 const Home = () => {
+  const baseUrl = process.env.BASE_URL || "";
   const [originalUrl, setOriginalUrl] = useState("");
+  const [shortenedUrl, setShortenedUrl] = useState("");
   const handleLinkSubmit = async () => {
     const shortId = nanoid(8);
+    setShortenedUrl(baseUrl + shortId);
     try {
       const result = await insertLinkToShorten(originalUrl, shortId);
       console.log("Rows inserted:", result.rowCount);
@@ -44,6 +47,11 @@ const Home = () => {
               </Button>
             </Compact>
           </Row>
+          {shortenedUrl && (
+            <Typography.Paragraph>
+              Shortened URL: <a href={shortenedUrl}>{shortenedUrl}</a>
+            </Typography.Paragraph>
+          )}
         </Col>
       </Row>
     </>

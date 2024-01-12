@@ -12,9 +12,10 @@ const Home = () => {
   const handleLinkSubmit = async () => {
     const shortId = nanoid(8);
     try {
-      await insertLinkToShorten(originalUrl, shortId);
-    } catch (e) {
-      console.log(e);
+      const result = await insertLinkToShorten(originalUrl, shortId);
+      console.log("Rows inserted:", result.rowCount);
+    } catch (error) {
+      console.error("Error:", error);
     }
     console.log(originalUrl);
   };

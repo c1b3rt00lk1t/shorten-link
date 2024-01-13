@@ -1,14 +1,5 @@
 "use client";
-import {
-  Typography,
-  Col,
-  Input,
-  Row,
-  Button,
-  Space,
-  Alert,
-  Tooltip,
-} from "antd";
+import { Typography, Col, Input, Row, Button, Space, Alert } from "antd";
 import styles from "./page.module.css";
 const { Compact } = Space;
 const { Title } = Typography;
@@ -62,7 +53,7 @@ const Home = () => {
                   }}
                 />
                 <Button size="large" type="primary" onClick={handleLinkSubmit}>
-                  Submit
+                  Shorten
                 </Button>
               </Compact>
             </Row>

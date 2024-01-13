@@ -75,7 +75,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row justify="center" align="top" className={styles.secondHeightRow}>
-        <Col span={8}>
+        <Col xxl={8} xl={10} lg={12} md={18} sm={18} xs={20}>
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">
               <Compact style={{ width: "100%" }}>

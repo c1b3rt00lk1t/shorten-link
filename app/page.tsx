@@ -1,12 +1,20 @@
 "use client";
-import { Typography, Col, Input, Row, Button, Space, Form } from "antd";
+import {
+  Typography,
+  Col,
+  Input,
+  Row,
+  Button,
+  Space,
+  Alert,
+  Tooltip,
+} from "antd";
 import styles from "./page.module.css";
 const { Compact } = Space;
 const { Title } = Typography;
 import { useState } from "react";
 import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
-import Link from "next/link";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -35,34 +43,37 @@ const Home = () => {
       </Row>
       <Row justify="center" align="top" className={styles.secondHeightRow}>
         <Col span={8}>
-          <Row justify="center" align="middle">
-            <Compact style={{ width: "100%" }}>
-              <Input
-                addonBefore="https://"
-                placeholder="Enter URL"
-                className={styles.urlInput}
-                size="large"
-                value={originalUrl}
-                onChange={(e) => {
-                  setOriginalUrl(
-                    e.target.value
-                      .replace("https://", "")
-                      .replace("http://", "")
-                  );
-                  setShortenedUrl("");
-                }}
+          <Space direction="vertical" size="middle" style={{ display: "flex" }}>
+            <Row justify="center" align="middle">
+              <Compact style={{ width: "100%" }}>
+                <Input
+                  addonBefore="https://"
+                  placeholder="Enter URL"
+                  className={styles.urlInput}
+                  size="large"
+                  value={originalUrl}
+                  onChange={(e) => {
+                    setOriginalUrl(
+                      e.target.value
+                        .replace("https://", "")
+                        .replace("http://", "")
+                    );
+                    setShortenedUrl("");
+                  }}
+                />
+                <Button size="large" type="primary" onClick={handleLinkSubmit}>
+                  Submit
+                </Button>
+              </Compact>
+            </Row>
+            {shortenedUrl && (
+              <Alert
+                message={"https://" + baseUrl + shortenedUrl}
+                type="success"
+                showIcon
               />
-              <Button size="large" type="primary" onClick={handleLinkSubmit}>
-                Submit
-              </Button>
-            </Compact>
-          </Row>
-          {shortenedUrl && (
-            <Typography.Paragraph>
-              Shortened URL:{" "}
-              <Link href={shortenedUrl}>{baseUrl + shortenedUrl}</Link>
-            </Typography.Paragraph>
-          )}
+            )}
+          </Space>
         </Col>
       </Row>
     </>

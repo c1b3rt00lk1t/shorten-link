@@ -1,5 +1,6 @@
 .mainBackground1 {
-  background-image: url("https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU");
+  /* background-image: url("https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: auto; */
+  background-color: rgba(38, 111, 145, 0.3);
 }

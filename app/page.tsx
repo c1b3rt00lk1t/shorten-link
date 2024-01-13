@@ -68,8 +68,10 @@ const Home = () => {
     <>
       <Row justify="start" align="top" className={styles.firstHeightRow}>
         <Col>
-          <Title level={2}>Beta version</Title>
-          <Title level={3}>Try at your own risk ;)</Title>
+          <Title level={2}>Shorten your links</Title>
+          <Title level={4} type="secondary">
+            Beta version. Try at your own risk ;)
+          </Title>
         </Col>
       </Row>
       <Row justify="center" align="top" className={styles.secondHeightRow}>

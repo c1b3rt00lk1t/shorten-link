@@ -105,8 +105,8 @@ const Home = () => {
         <Col>
           <Title level={1}>Let&#39;s share links ;)</Title>
           <Title level={5} type="secondary">
-            Submit to <em>shorten</em> your link or click the generated QR to{" "}
-            <em>download</em> it
+            Submit to <em>shorten</em> or click the generated QR to{" "}
+            <em>download</em>
           </Title>
         </Col>
       </Row>

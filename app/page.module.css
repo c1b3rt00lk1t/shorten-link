@@ -19,9 +19,18 @@
 }
 
 .firstHeightRow {
-  height: 40vh;
+  height: 20vh;
 }
 
 .secondHeightRow {
+  height: 20vh;
+  margin: 10vh 0;
+}
+
+.thirdHeightRow {
   height: 30vh;
+}
+
+.myqrcode {
+  cursor: pointer;
 }

@@ -10,6 +10,7 @@ import {
   Tooltip,
   Form,
   message,
+  QRCode,
 } from "antd";
 import { useMatchMedia } from "./hooks/useMatchMedia";
 
@@ -82,17 +83,45 @@ const Home = () => {
     "(max-width: 767px) and (orientation: portrait)"
   );
 
+  const downloadQRCode = () => {
+    const canvas = document
+      .getElementById("myqrcode")
+      ?.querySelector<HTMLCanvasElement>("canvas");
+    if (canvas) {
+      const url = canvas.toDataURL();
+      const a = document.createElement("a");
+      a.download = "QRCode.png";
+      a.href = url;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  };
+
   return (
     <>
       <Row justify="start" align="top" className={styles.firstHeightRow}>
+        <Col span={1}></Col>
         <Col>
-          <Title level={2}>Shorten your links</Title>
-          <Title level={4} type="secondary">
-            Beta version. Try at your own risk ;)
+          <Title level={1}>Let&#39;s share links ;)</Title>
+          <Title level={5} type="secondary">
+            Submit to <em>shorten</em> your link or click the generated QR to{" "}
+            <em>download</em> it
           </Title>
         </Col>
       </Row>
       <Row justify="center" align="top" className={styles.secondHeightRow}>
+        <Col>
+          <div
+            id="myqrcode"
+            className={styles.myqrcode}
+            onClick={downloadQRCode}
+          >
+            <QRCode value={originalUrl || "-"} bgColor="white" />
+          </div>
+        </Col>
+      </Row>
+      <Row justify="center" align="top" className={styles.thirdHeightRow}>
         <Col xxl={8} xl={10} lg={12} md={18} sm={18} xs={20}>
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">

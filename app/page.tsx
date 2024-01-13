@@ -24,6 +24,8 @@ import {
   ShareAltOutlined,
   GlobalOutlined,
   ClearOutlined,
+  LogoutOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -32,10 +34,10 @@ const Home = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
   const [copied, setCopied] = useState(false);
-
-  const [form] = Form.useForm();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLinkSubmit = async () => {
+    setIsLoading(true);
     const shortId = nanoid(8);
 
     try {
@@ -48,6 +50,7 @@ const Home = () => {
       console.error("Error:", error);
     }
     console.log(originalUrl);
+    setIsLoading(false);
   };
 
   const onFinishFailed = () => {
@@ -102,7 +105,6 @@ const Home = () => {
                 >
                   <Form.Item
                     name="url"
-                    // label="URL"
                     rules={[
                       { required: true },
                       { type: "url", warningOnly: true },
@@ -125,9 +127,14 @@ const Home = () => {
                           setShortenedUrl("");
                         }}
                       />{" "}
-                      <Button size="large" type="primary" htmlType="submit">
-                        Shorten
-                      </Button>
+                      <Button
+                        size="large"
+                        type="primary"
+                        htmlType="submit"
+                        icon={
+                          isLoading ? <LoadingOutlined /> : <LogoutOutlined />
+                        }
+                      />
                     </Compact>
                   </Form.Item>
                 </Form>

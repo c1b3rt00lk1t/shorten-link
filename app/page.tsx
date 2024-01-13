@@ -8,6 +8,8 @@ import {
   Space,
   Alert,
   Tooltip,
+  Form,
+  message,
 } from "antd";
 import { useMatchMedia } from "./hooks/useMatchMedia";
 
@@ -31,6 +33,8 @@ const Home = () => {
   const [shortenedUrl, setShortenedUrl] = useState("");
   const [copied, setCopied] = useState(false);
 
+  const [form] = Form.useForm();
+
   const handleLinkSubmit = async () => {
     const shortId = nanoid(8);
 
@@ -44,6 +48,10 @@ const Home = () => {
       console.error("Error:", error);
     }
     console.log(originalUrl);
+  };
+
+  const onFinishFailed = () => {
+    message.error("Submit failed!");
   };
 
   const handleOpenInNewTab = () => {
@@ -86,30 +94,43 @@ const Home = () => {
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">
               <Col span={24}>
-                <Compact style={{ width: "100%" }}>
-                  <Input
-                    addonBefore="https://"
-                    placeholder="Enter URL"
-                    className={styles.urlInput}
-                    size="large"
-                    value={originalUrl}
-                    onChange={(e) => {
-                      setOriginalUrl(
-                        e.target.value
-                          .replace("https://", "")
-                          .replace("http://", "")
-                      );
-                      setShortenedUrl("");
-                    }}
-                  />
-                  <Button
-                    size="large"
-                    type="primary"
-                    onClick={handleLinkSubmit}
+                <Form
+                  layout="vertical"
+                  onFinish={handleLinkSubmit}
+                  onFinishFailed={onFinishFailed}
+                  autoComplete="off"
+                >
+                  <Form.Item
+                    name="url"
+                    // label="URL"
+                    rules={[
+                      { required: true },
+                      { type: "url", warningOnly: true },
+                      { type: "string", min: 6 },
+                    ]}
                   >
-                    Shorten
-                  </Button>
-                </Compact>
+                    <Compact style={{ width: "100%" }}>
+                      <Input
+                        addonBefore="https://"
+                        placeholder="Enter URL"
+                        className={styles.urlInput}
+                        size="large"
+                        value={originalUrl}
+                        onChange={(e) => {
+                          setOriginalUrl(
+                            e.target.value
+                              .replace("https://", "")
+                              .replace("http://", "")
+                          );
+                          setShortenedUrl("");
+                        }}
+                      />{" "}
+                      <Button size="large" type="primary" htmlType="submit">
+                        Shorten
+                      </Button>
+                    </Compact>
+                  </Form.Item>
+                </Form>
               </Col>
             </Row>
             <Row justify="center" align="middle">

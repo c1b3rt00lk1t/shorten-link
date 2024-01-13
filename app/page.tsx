@@ -56,7 +56,7 @@ const Home = () => {
         await navigator.share({
           title: "Share Shortened Link",
           text: "Check out this shortened link:",
-          url: `https://${baseUrl}${shortenedUrl}`,
+          url: `${baseUrl}${shortenedUrl}`,
         });
       } catch (error) {
         console.error("Error sharing link:", error);

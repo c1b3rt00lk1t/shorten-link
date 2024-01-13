@@ -56,7 +56,7 @@ const Home = () => {
         await navigator.share({
           title: "Share Shortened Link",
           text: "Check out this shortened link:",
-          url: `${baseUrl}${shortenedUrl}`,
+          url: `https://${baseUrl}${shortenedUrl}`,
         });
       } catch (error) {
         console.error("Error sharing link:", error);
@@ -111,7 +111,7 @@ const Home = () => {
                 message={
                   isMobilePortrait
                     ? shortenedUrl.split("/")[1]
-                    : "https://" + baseUrl + shortenedUrl
+                    : baseUrl + shortenedUrl
                 }
                 type="success"
                 showIcon

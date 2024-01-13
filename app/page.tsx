@@ -15,7 +15,7 @@ const { Title } = Typography;
 import { useState } from "react";
 import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
-import { ClearOutlined } from "@ant-design/icons";
+import { GlobalOutlined, ClearOutlined } from "@ant-design/icons";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -33,6 +33,10 @@ const Home = () => {
       console.error("Error:", error);
     }
     console.log(originalUrl);
+  };
+
+  const handleOpenInNewTab = () => {
+    window.open(shortenedUrl, "_blank");
   };
   return (
     <>
@@ -73,17 +77,27 @@ const Home = () => {
                 type="success"
                 showIcon
                 action={
-                  <Tooltip placement="bottom" title="Clear" color="red">
-                    <Button
-                      size="small"
-                      shape="circle"
-                      icon={<ClearOutlined />}
-                      onClick={() => {
-                        setOriginalUrl("");
-                        setShortenedUrl("");
-                      }}
-                    />
-                  </Tooltip>
+                  <Space direction="horizontal">
+                    <Tooltip placement="bottom" title="Visit">
+                      <Button
+                        size="small"
+                        shape="circle"
+                        icon={<GlobalOutlined />}
+                        onClick={handleOpenInNewTab}
+                      />
+                    </Tooltip>
+                    <Tooltip placement="bottom" title="Clear" color="red">
+                      <Button
+                        size="small"
+                        shape="circle"
+                        icon={<ClearOutlined />}
+                        onClick={() => {
+                          setOriginalUrl("");
+                          setShortenedUrl("");
+                        }}
+                      />
+                    </Tooltip>
+                  </Space>
                 }
               />
             )}

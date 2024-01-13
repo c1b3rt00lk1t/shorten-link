@@ -111,7 +111,7 @@ const Home = () => {
                 message={
                   isMobilePortrait
                     ? shortenedUrl.split("/")[1]
-                    : baseUrl + shortenedUrl
+                    : "https://" + baseUrl + shortenedUrl
                 }
                 type="success"
                 showIcon

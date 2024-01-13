@@ -85,81 +85,91 @@ const Home = () => {
         <Col xxl={8} xl={10} lg={12} md={18} sm={18} xs={20}>
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">
-              <Compact style={{ width: "100%" }}>
-                <Input
-                  addonBefore="https://"
-                  placeholder="Enter URL"
-                  className={styles.urlInput}
-                  size="large"
-                  value={originalUrl}
-                  onChange={(e) => {
-                    setOriginalUrl(
-                      e.target.value
-                        .replace("https://", "")
-                        .replace("http://", "")
-                    );
-                    setShortenedUrl("");
-                  }}
-                />
-                <Button size="large" type="primary" onClick={handleLinkSubmit}>
-                  Shorten
-                </Button>
-              </Compact>
+              <Col span={24}>
+                <Compact style={{ width: "100%" }}>
+                  <Input
+                    addonBefore="https://"
+                    placeholder="Enter URL"
+                    className={styles.urlInput}
+                    size="large"
+                    value={originalUrl}
+                    onChange={(e) => {
+                      setOriginalUrl(
+                        e.target.value
+                          .replace("https://", "")
+                          .replace("http://", "")
+                      );
+                      setShortenedUrl("");
+                    }}
+                  />
+                  <Button
+                    size="large"
+                    type="primary"
+                    onClick={handleLinkSubmit}
+                  >
+                    Shorten
+                  </Button>
+                </Compact>
+              </Col>
             </Row>
-            {shortenedUrl && (
-              <Alert
-                message={
-                  isMobilePortrait
-                    ? shortenedUrl.split("/")[1]
-                    : "https://" + baseUrl + shortenedUrl
-                }
-                type="success"
-                showIcon
-                action={
-                  <Space direction="horizontal">
-                    <Tooltip placement="bottom" title="Copy">
-                      <CopyToClipboard
-                        text={"https://" + baseUrl + shortenedUrl}
-                        onCopy={() => setCopied(true)}
-                      >
-                        <Button
-                          size="small"
-                          shape="circle"
-                          icon={<CopyOutlined />}
-                        />
-                      </CopyToClipboard>
-                    </Tooltip>
-                    <Tooltip placement="bottom" title="Share">
-                      <Button
-                        size="small"
-                        shape="circle"
-                        icon={<ShareAltOutlined />}
-                        onClick={handleShareLink}
-                      />
-                    </Tooltip>
-                    <Tooltip placement="bottom" title="Visit">
-                      <Button
-                        size="small"
-                        shape="circle"
-                        icon={<GlobalOutlined />}
-                        onClick={handleOpenInNewTab}
-                      />
-                    </Tooltip>
-                    <Tooltip placement="bottom" title="Clear" color="red">
-                      <Button
-                        size="small"
-                        shape="circle"
-                        icon={<ClearOutlined />}
-                        onClick={() => {
-                          setOriginalUrl("");
-                          setShortenedUrl("");
-                        }}
-                      />
-                    </Tooltip>
-                  </Space>
-                }
-              />
-            )}
+            <Row justify="center" align="middle">
+              <Col span={24}>
+                {shortenedUrl && (
+                  <Alert
+                    message={
+                      isMobilePortrait
+                        ? shortenedUrl.split("/")[1]
+                        : "https://" + baseUrl + shortenedUrl
+                    }
+                    type="success"
+                    showIcon
+                    action={
+                      <Space direction="horizontal">
+                        <Tooltip placement="bottom" title="Copy">
+                          <CopyToClipboard
+                            text={"https://" + baseUrl + shortenedUrl}
+                            onCopy={() => setCopied(true)}
+                          >
+                            <Button
+                              size="small"
+                              shape="circle"
+                              icon={<CopyOutlined />}
+                            />
+                          </CopyToClipboard>
+                        </Tooltip>
+                        <Tooltip placement="bottom" title="Share">
+                          <Button
+                            size="small"
+                            shape="circle"
+                            icon={<ShareAltOutlined />}
+                            onClick={handleShareLink}
+                          />
+                        </Tooltip>
+                        <Tooltip placement="bottom" title="Visit">
+                          <Button
+                            size="small"
+                            shape="circle"
+                            icon={<GlobalOutlined />}
+                            onClick={handleOpenInNewTab}
+                          />
+                        </Tooltip>
+                        <Tooltip placement="bottom" title="Clear" color="red">
+                          <Button
+                            size="small"
+                            shape="circle"
+                            icon={<ClearOutlined />}
+                            onClick={() => {
+                              setOriginalUrl("");
+                              setShortenedUrl("");
+                            }}
+                          />
+                        </Tooltip>
+                      </Space>
+                    }
+                  />
+                )}
+              </Col>
+            </Row>
           </Space>
         </Col>
       </Row>

@@ -9,6 +9,8 @@ import {
   Alert,
   Tooltip,
 } from "antd";
+import { useMatchMedia } from "./hooks/useMatchMedia";
+
 import styles from "./page.module.css";
 const { Compact } = Space;
 const { Title } = Typography;
@@ -64,6 +66,11 @@ const Home = () => {
     }
   };
 
+  // Use the useMediaQuery hook to check the screen size
+  const isMobilePortrait = useMatchMedia(
+    "(max-width: 767px) and (orientation: portrait)"
+  );
+
   return (
     <>
       <Row justify="start" align="top" className={styles.firstHeightRow}>
@@ -101,7 +108,11 @@ const Home = () => {
             </Row>
             {shortenedUrl && (
               <Alert
-                message={"https://" + baseUrl + shortenedUrl}
+                message={
+                  isMobilePortrait
+                    ? shortenedUrl.split("/")[1]
+                    : "https://" + baseUrl + shortenedUrl
+                }
                 type="success"
                 showIcon
                 action={

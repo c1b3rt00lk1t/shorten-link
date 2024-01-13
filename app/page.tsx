@@ -1,11 +1,21 @@
 "use client";
-import { Typography, Col, Input, Row, Button, Space, Alert } from "antd";
+import {
+  Typography,
+  Col,
+  Input,
+  Row,
+  Button,
+  Space,
+  Alert,
+  Tooltip,
+} from "antd";
 import styles from "./page.module.css";
 const { Compact } = Space;
 const { Title } = Typography;
 import { useState } from "react";
 import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
+import { ClearOutlined } from "@ant-design/icons";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -62,6 +72,19 @@ const Home = () => {
                 message={"https://" + baseUrl + shortenedUrl}
                 type="success"
                 showIcon
+                action={
+                  <Tooltip placement="bottom" title="Clear" color="red">
+                    <Button
+                      size="small"
+                      shape="circle"
+                      icon={<ClearOutlined />}
+                      onClick={() => {
+                        setOriginalUrl("");
+                        setShortenedUrl("");
+                      }}
+                    />
+                  </Tooltip>
+                }
               />
             )}
           </Space>

@@ -15,7 +15,11 @@ const { Title } = Typography;
 import { useState } from "react";
 import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
-import { GlobalOutlined, ClearOutlined } from "@ant-design/icons";
+import {
+  ShareAltOutlined,
+  GlobalOutlined,
+  ClearOutlined,
+} from "@ant-design/icons";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -38,6 +42,23 @@ const Home = () => {
   const handleOpenInNewTab = () => {
     window.open(shortenedUrl, "_blank");
   };
+
+  const handleShareLink = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Share Shortened Link",
+          text: "Check out this shortened link:",
+          url: `https://${baseUrl}${shortenedUrl}`,
+        });
+      } catch (error) {
+        console.error("Error sharing link:", error);
+      }
+    } else {
+      console.warn("Web Share API not supported. ");
+    }
+  };
+
   return (
     <>
       <Row justify="start" align="top" className={styles.firstHeightRow}>
@@ -78,6 +99,14 @@ const Home = () => {
                 showIcon
                 action={
                   <Space direction="horizontal">
+                    <Tooltip placement="bottom" title="Share">
+                      <Button
+                        size="small"
+                        shape="circle"
+                        icon={<ShareAltOutlined />}
+                        onClick={handleShareLink}
+                      />
+                    </Tooltip>
                     <Tooltip placement="bottom" title="Visit">
                       <Button
                         size="small"

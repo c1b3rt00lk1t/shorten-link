@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 
 export function useMatchMedia(query: string) {
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
+  const isBrowser = typeof window !== "undefined";
+  const [matches, setMatches] = useState(
+    isBrowser ? window.matchMedia(query).matches : false
+  );
   useEffect(() => {
     const matchQueryList = window.matchMedia(query);
     function handleChange(event: MediaQueryListEvent) {
@@ -11,6 +14,6 @@ export function useMatchMedia(query: string) {
     return () => {
       matchQueryList.removeEventListener("change", handleChange);
     };
-  }, [query]);
+  }, [query, isBrowser]);
   return matches;
 }

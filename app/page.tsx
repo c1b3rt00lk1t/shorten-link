@@ -16,15 +16,19 @@ import { useState } from "react";
 import { insertLinkToShorten } from "./lib/actions";
 import { nanoid } from "nanoid";
 import {
+  CopyOutlined,
   ShareAltOutlined,
   GlobalOutlined,
   ClearOutlined,
 } from "@ant-design/icons";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
+  const [copied, setCopied] = useState(false);
+
   const handleLinkSubmit = async () => {
     const shortId = nanoid(8);
 
@@ -32,6 +36,7 @@ const Home = () => {
       const result = await insertLinkToShorten(originalUrl, shortId);
       if (result.rowCount === 0) throw new Error("No rows inserted");
       setShortenedUrl("/" + shortId);
+      setCopied(false);
       console.log("Rows inserted:", result.rowCount);
     } catch (error) {
       console.error("Error:", error);
@@ -99,6 +104,18 @@ const Home = () => {
                 showIcon
                 action={
                   <Space direction="horizontal">
+                    <Tooltip placement="bottom" title="Copy">
+                      <CopyToClipboard
+                        text={"https://" + baseUrl + shortenedUrl}
+                        onCopy={() => setCopied(true)}
+                      >
+                        <Button
+                          size="small"
+                          shape="circle"
+                          icon={<CopyOutlined />}
+                        />
+                      </CopyToClipboard>
+                    </Tooltip>
                     <Tooltip placement="bottom" title="Share">
                       <Button
                         size="small"

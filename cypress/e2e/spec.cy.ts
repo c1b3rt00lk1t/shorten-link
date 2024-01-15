@@ -1,4 +1,5 @@
 /// <reference types="@testing-library/cypress" />
+const path = require("path");
 
 describe("Short link app", () => {
   it("generates a short url than can be copied, shared, visited and cleared", () => {
@@ -35,5 +36,13 @@ describe("Short link app", () => {
     cy.findByRole("button").click();
     cy.contains("'url' is required");
     cy.contains("Submit failed!");
+  });
+
+  it("downloads a QR code when clicked on the download button", () => {
+    cy.visit("http://localhost:3000");
+    cy.findByRole("textbox").type("https://www.google.com");
+    cy.get(".ant-qrcode").click();
+    const downloadsFolder = Cypress.config("downloadsFolder");
+    cy.readFile(path.join(downloadsFolder, "QRCode.png")).should("exist");
   });
 });

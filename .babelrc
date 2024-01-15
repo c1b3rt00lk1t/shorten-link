@@ -1,0 +1,9 @@
+{
+    "presets": [["next/babel",{
+        "preset-env": {
+          "targets": { "chrome": 117 }
+        }
+      }]],
+    
+    "plugins": ["istanbul"]
+  }

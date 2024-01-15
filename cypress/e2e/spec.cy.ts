@@ -45,4 +45,12 @@ describe("Short link app", () => {
     const downloadsFolder = Cypress.config("downloadsFolder");
     cy.readFile(path.join(downloadsFolder, "QRCode.png")).should("exist");
   });
+
+  it("visits the page in a mobile device", () => {
+    cy.visit("http://localhost:3000");
+    cy.viewport(375, 667);
+    cy.contains("Let's share links ;)");
+    cy.findByRole("textbox").type("https://www.google.com");
+    cy.findByRole("button").click();
+  });
 });

@@ -1,3 +1,5 @@
+/// <reference types="@testing-library/cypress" />
+
 describe("Short link app", () => {
   it("generates a short url than can be copied, shared, visited and cleared", () => {
     cy.visit("http://localhost:3000");

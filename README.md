@@ -17,6 +17,7 @@ A working version of the mobile/desktop app can be found <a href='https://shorte
 
 - After cloning the repo: <code>$ npm install</code>
 - To run the app in local: <code>$ npm run dev</code>
+- To run the e2e cypress tests in local: <code>$ npm run cypress:open</code>
 
 ### Key technical features
 

@@ -22,6 +22,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.18",
     "@testing-library/cypress": "^10.0.1",
     "@types/node": "^20",
     "@types/react": "^18",

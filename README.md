@@ -19,6 +19,10 @@ A working version of the mobile/desktop app can be found <a href='https://shorte
 - To run the app in local: <code>$ npm run dev</code>
 - To run the e2e cypress tests in local: <code>$ npm run cypress:open</code>
 
+### Cloc stats
+
+![cloc stats](https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/cloc.png?raw=true)
+
 ### Key technical features
 
 The app leverages on the following technical pillars:
@@ -28,3 +32,11 @@ The app leverages on the following technical pillars:
 - Error handling with <code>try...catch</code> blocks and "Not found" handling with <code>not-found.tsx</code>.
 - The app is build using the component library <code>Ant design</code>.
 - End-to-end testing with <code>Cypress</code> and <code>Testing library plugin</code>.
+
+### Code coverage
+
+A +90% of code coverage is achieved by using an E2E test strategy with Cypress.
+
+<p align="center">
+<img src="https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/coverage.png?raw=true" width="50%" >
+</p>

@@ -6,7 +6,7 @@
 
 ### Basic description
 
-TYPESCRIPT · NEXT · ANTD COMPONENTS · CSS MODULES  
+TYPESCRIPT · NEXT · ANTD COMPONENTS · CSS MODULES · CYPRESS · TESTING LIBRARY
 Web app providing short links and QR code for an input URL. When the app is accessed with the short link, it redirects the user to the original URL. If the short link does not exist, the app displays a 404 page inviting the user to create a new short link.
 
 ### Available demo online
@@ -26,3 +26,4 @@ The app leverages on the following technical pillars:
 - The app is using the new <code>App router</code> feature from <code>Next.js</code>.
 - Error handling with <code>try...catch</code> blocks and "Not found" handling with <code>not-found.tsx</code>.
 - The app is build using the component library <code>Ant design</code>.
+- End-to-end testing with <code>Cypress</code> and <code>Testing library plugin</code>.

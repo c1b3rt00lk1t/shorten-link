@@ -40,18 +40,15 @@ const Home = () => {
   const handleLinkSubmit = async () => {
     setIsLoading(true);
     const shortId = nanoid(8);
-
     try {
       const result = await insertLinkToShorten(originalUrl, shortId);
-      if (result.rowCount === 0) throw new Error("No rows inserted");
       setShortenedUrl("/" + shortId);
       setCopied(false);
-      console.log("Rows inserted:", result.rowCount);
     } catch (error) {
-      console.error("Error:", error);
+      message.error("Database connection failed!");
+    } finally {
+      setIsLoading(false);
     }
-    console.log(originalUrl);
-    setIsLoading(false);
   };
 
   const onFinishFailed = () => {

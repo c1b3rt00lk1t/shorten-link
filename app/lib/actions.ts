@@ -6,9 +6,13 @@ export async function insertLinkToShorten(
   originalUrl: string,
   shortId: string
 ) {
-  const query = sql`INSERT INTO shorten_link (url, short_id) VALUES (${originalUrl}, ${shortId})`;
-  const result = await query;
-  return result;
+  try {
+    const query = sql`INSERT INTO shorten_link (url, short_id) VALUES (${originalUrl}, ${shortId})`;
+    const result = await query;
+    return result;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function getLinkToRedirect(shortId: string) {

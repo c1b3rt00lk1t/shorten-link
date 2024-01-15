@@ -1,7 +1,7 @@
 describe("Short link app", () => {
-  it("generates a short url than can be copied, shared, visited and cleared", async () => {
+  it("generates a short url than can be copied, shared, visited and cleared", () => {
     cy.visit("http://localhost:3000");
-
+    cy.contains("Let's share links ;)");
     cy.findByRole("textbox").type("https://www.google.com");
     cy.findByRole("button").click();
     cy.findByRole("button", { name: "Copy to clipboard" }).click();

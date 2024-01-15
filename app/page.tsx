@@ -185,6 +185,7 @@ const Home = () => {
                             onCopy={() => setCopied(true)}
                           >
                             <Button
+                              aria-label="Copy to clipboard"
                               size="small"
                               shape="circle"
                               icon={<CopyOutlined />}
@@ -193,6 +194,7 @@ const Home = () => {
                         </Tooltip>
                         <Tooltip placement="bottom" title="Share">
                           <Button
+                            aria-label="Share link"
                             size="small"
                             shape="circle"
                             icon={<ShareAltOutlined />}
@@ -201,6 +203,7 @@ const Home = () => {
                         </Tooltip>
                         <Tooltip placement="bottom" title="Visit">
                           <Button
+                            aria-label="Visit link"
                             size="small"
                             shape="circle"
                             icon={<GlobalOutlined />}
@@ -209,6 +212,7 @@ const Home = () => {
                         </Tooltip>
                         <Tooltip placement="bottom" title="Clear" color="red">
                           <Button
+                            aria-label="Clear link"
                             size="small"
                             shape="circle"
                             icon={<ClearOutlined />}

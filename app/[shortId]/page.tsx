@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { getLinkToRedirect } from "../lib/actions";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params: { shortId },
@@ -14,7 +15,7 @@ export default async function Page({
     console.error("Error:", error);
   }
   if (!url) {
-    redirect("/");
+    notFound();
   }
   redirect("https://" + url);
 }

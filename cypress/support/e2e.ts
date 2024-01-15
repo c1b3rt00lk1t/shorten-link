@@ -13,6 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// cypress/support/e2e.js
+import '@cypress/code-coverage/support'
+
 // Import testing library commands
 import "@testing-library/cypress/add-commands";
 

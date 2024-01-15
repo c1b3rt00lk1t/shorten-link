@@ -26,4 +26,12 @@ describe("Short link app", () => {
     // Check it navigates to the homepage
     cy.contains("Let's share links ;)");
   });
+
+  it("displays error message when a input is empty", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.findByRole("button").click();
+    cy.contains("'url' is required");
+    cy.contains("Submit failed!");
+  });
 });

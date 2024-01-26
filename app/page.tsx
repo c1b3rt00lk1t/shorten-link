@@ -2,31 +2,24 @@
 import {
   Typography,
   Col,
-  Input,
   Row,
   Button,
   Space,
   Alert,
   Tooltip,
-  Form,
-  message,
   QRCode,
 } from "antd";
 import { useMatchMedia } from "./hooks/useMatchMedia";
 
 import styles from "./page.module.css";
-const { Compact } = Space;
+
 const { Title } = Typography;
 import { useState } from "react";
-import { insertLinkToShorten } from "./lib/actions";
-import { nanoid } from "nanoid";
 import {
   CopyOutlined,
   ShareAltOutlined,
   GlobalOutlined,
   ClearOutlined,
-  LogoutOutlined,
-  LoadingOutlined,
 } from "@ant-design/icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import FormURL from "./components/FormURL";
@@ -36,25 +29,6 @@ const Home = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
   const [copied, setCopied] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleLinkSubmit = async () => {
-    setIsLoading(true);
-    const shortId = nanoid(8);
-    try {
-      const result = await insertLinkToShorten(originalUrl, shortId);
-      setShortenedUrl("/" + shortId);
-      setCopied(false);
-    } catch (error) {
-      message.error("Database connection failed!");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const onFinishFailed = () => {
-    message.error("Submit failed!");
-  };
 
   const handleOpenInNewTab = () => {
     window.open(shortenedUrl, "_blank");

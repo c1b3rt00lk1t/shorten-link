@@ -1,6 +1,6 @@
 "use client";
 import { Typography, Col, Row, Space } from "antd";
-
+import { blue } from "@ant-design/colors";
 import styles from "./page.module.css";
 
 const { Title } = Typography;
@@ -26,6 +26,13 @@ const Home = () => {
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">
               <Col span={24}>
+                <Title
+                  level={5}
+                  style={{ color: blue.at(7), textAlign: "center" }}
+                >
+                  Submit to <em>shorten</em> an url or click the generated QR to{" "}
+                  <em>download</em> it
+                </Title>
                 <FormURL
                   originalUrl={originalUrl}
                   setOriginalUrl={setOriginalUrl}

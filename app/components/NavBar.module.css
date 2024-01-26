@@ -11,6 +11,12 @@
   margin-top: 0.75rem !important;
 }
 
+.preventSelect {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
 @media screen and (min-width: 768px) {
   .iconHeader {
     display: block !important;

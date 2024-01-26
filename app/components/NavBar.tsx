@@ -8,7 +8,10 @@ const { Paragraph } = Typography;
 const { Title } = Typography;
 const NavBar = () => {
   return (
-    <header style={{ backgroundColor: blue[12] }}>
+    <header
+      style={{ backgroundColor: blue[12] }}
+      className={styles.preventSelect}
+    >
       <Row justify="center" align="middle">
         <Col>
           <Row justify="center" align="middle">

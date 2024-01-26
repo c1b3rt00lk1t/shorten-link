@@ -8,6 +8,7 @@ import {
   GlobalOutlined,
   ClearOutlined,
 } from "@ant-design/icons";
+import { blue } from "@ant-design/colors";
 
 type ShortURLOutputProps = {
   shortenedUrl: string;
@@ -107,6 +108,10 @@ const ShortURLOutput = ({
           </Space>
         }
       />
+      <p style={{ color: blue.at(8), textAlign: "center" }}>
+        short links generated in this web will be active for one month and then
+        removed{" "}
+      </p>
     </>
   );
 };

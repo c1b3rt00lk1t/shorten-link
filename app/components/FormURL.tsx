@@ -23,7 +23,7 @@ const FormURL = ({
     const shortId = nanoid(8);
     try {
       const result = await insertLinkToShorten(originalUrl, shortId);
-      setShortenedUrl("/" + shortId);
+      if (result.rowCount === 1) setShortenedUrl("/" + shortId);
     } catch (error) {
       message.error("Database connection failed!");
     } finally {

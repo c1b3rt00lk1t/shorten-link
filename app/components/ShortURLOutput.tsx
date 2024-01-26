@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext, useMemo } from "react";
 import { Button, Space, Alert, Tooltip } from "antd";
 import { useMatchMedia } from "../hooks/useMatchMedia";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -9,6 +9,12 @@ import {
   ClearOutlined,
 } from "@ant-design/icons";
 import { blue } from "@ant-design/colors";
+
+// imports for the notification
+import { notification } from "antd";
+import type { NotificationArgsProps } from "antd";
+type NotificationPlacement = NotificationArgsProps["placement"];
+const Context = createContext({ name: "Default" });
 
 type ShortURLOutputProps = {
   shortenedUrl: string;
@@ -54,6 +60,19 @@ const ShortURLOutput = ({
     setOriginalUrl("");
     setShortenedUrl("");
   };
+
+  // Notification
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (placement: NotificationPlacement) => {
+    api.info({
+      message: `Notification ${placement}`,
+      description: (
+        <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>
+      ),
+      placement,
+    });
+  };
+  const contextValue = useMemo(() => ({ name: "Ant Design" }), []);
 
   return (
     <>

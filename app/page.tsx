@@ -80,6 +80,7 @@ const Home = () => {
     "(max-width: 767px) and (orientation: portrait)"
   );
 
+  // Download the QR code as a png file
   const downloadQRCode = () => {
     const canvas = document
       .getElementById("myqrcode")
@@ -131,9 +132,16 @@ const Home = () => {
                 >
                   <Form.Item
                     name="url"
+                    // validates that the url is valid but does not require that starts with www
+                    // if the url pattern is not valid, it shows an error message asking for a valid url
+                    // if no url is provided, an error message is shown saying 'url is required'
                     rules={[
                       { required: true },
-                      { type: "url", warningOnly: true },
+                      {
+                        pattern:
+                          /^(https?:\/\/)?(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+([/?].*)?$/,
+                        message: "Please enter a valid URL",
+                      },
                       { type: "string", min: 6 },
                     ]}
                   >

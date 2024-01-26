@@ -16,16 +16,6 @@ const Home = () => {
 
   return (
     <>
-      <Row justify="start" align="top" className={styles.firstHeightRow}>
-        <Col span={1}></Col>
-        <Col>
-          <Title level={1}>Let&#39;s share links ;)</Title>
-          <Title level={5} type="secondary">
-            Submit to <em>shorten</em> or click the generated QR to{" "}
-            <em>download</em>
-          </Title>
-        </Col>
-      </Row>
       <Row justify="center" align="top" className={styles.secondHeightRow}>
         <Col>
           <QRCodeDownload originalUrl={originalUrl} />

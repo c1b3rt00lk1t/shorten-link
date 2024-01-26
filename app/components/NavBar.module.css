@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+.iconHeader {
+  display: none !important;
+}
+
+.NavBarTitle {
+  font-family: "Permanent Marker", cursive !important;
+  font-size: 3rem !important;
+  margin-bottom: 0 !important;
+  margin-top: 0.75rem !important;
+}
+
+@media screen and (min-width: 768px) {
+  .iconHeader {
+    display: block !important;
+    font-size: 7rem !important;
+  }
+}

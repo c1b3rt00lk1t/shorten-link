@@ -1,3 +1,10 @@
-.mainBackground1 {
-  background-color: rgba(230, 244, 255, 1);
+.html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.mainBackground {
+  margin: 0;
+  padding: 0;
 }

@@ -29,6 +29,7 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import FormURL from "./components/FormURL";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -124,53 +125,12 @@ const Home = () => {
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">
               <Col span={24}>
-                <Form
-                  layout="vertical"
-                  onFinish={handleLinkSubmit}
-                  onFinishFailed={onFinishFailed}
-                  autoComplete="off"
-                >
-                  <Form.Item
-                    name="url"
-                    // validates that the url is valid but does not require that starts with www
-                    // if the url pattern is not valid, it shows an error message asking for a valid url
-                    // if no url is provided, an error message is shown saying 'url is required'
-                    rules={[
-                      { required: true },
-                      {
-                        pattern:
-                          /^(https?:\/\/)?(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+([/?].*)?$/,
-                        message: "Please enter a valid URL",
-                      },
-                      { type: "string", min: 6 },
-                    ]}
-                  >
-                    <Compact style={{ width: "100%" }}>
-                      <Input
-                        addonBefore="https://"
-                        placeholder="Enter URL"
-                        size="large"
-                        value={originalUrl}
-                        onChange={(e) => {
-                          setOriginalUrl(
-                            e.target.value
-                              .replace("https://", "")
-                              .replace("http://", "")
-                          );
-                          setShortenedUrl("");
-                        }}
-                      />{" "}
-                      <Button
-                        size="large"
-                        type="primary"
-                        htmlType="submit"
-                        icon={
-                          isLoading ? <LoadingOutlined /> : <LogoutOutlined />
-                        }
-                      />
-                    </Compact>
-                  </Form.Item>
-                </Form>
+                <FormURL
+                  originalUrl={originalUrl}
+                  setOriginalUrl={setOriginalUrl}
+                  setShortenedUrl={setShortenedUrl}
+                  setCopied={setCopied}
+                />
               </Col>
             </Row>
             <Row justify="center" align="middle">

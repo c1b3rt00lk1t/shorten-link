@@ -3,6 +3,7 @@ import styles from "./layout.module.css";
 import { Col, Row } from "antd";
 import NavBar from "./components/NavBar";
 import { blue } from "@ant-design/colors";
+import Footer from "./components/Footer";
 
 export default function RootLayout({
   children,
@@ -27,6 +28,11 @@ export default function RootLayout({
           </Row>
           <Row justify="center" align="middle">
             <Col span={24}>{children}</Col>
+          </Row>
+          <Row justify="center" align="middle">
+            <Col span={24}>
+              <Footer />
+            </Col>
           </Row>
         </AntdRegistry>
       </body>

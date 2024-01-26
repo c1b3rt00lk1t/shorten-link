@@ -63,7 +63,7 @@ const FormURL = ({
         <Compact style={{ width: "100%" }}>
           <Input
             addonBefore="https://"
-            placeholder="Enter URL"
+            placeholder="www.example.com"
             size="large"
             value={originalUrl}
             onChange={(e) => {

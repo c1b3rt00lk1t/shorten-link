@@ -23,7 +23,7 @@ const QRCodeDownload = ({ originalUrl }: QRCodeDownloadProps) => {
   return (
     <>
       <div id="myqrcode" className={styles.myqrcode} onClick={downloadQRCode}>
-        <QRCode value={originalUrl || "-"} bgColor="white" />
+        <QRCode value={originalUrl || "www.example.com"} bgColor="white" />
       </div>
     </>
   );

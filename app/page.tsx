@@ -1,14 +1,5 @@
 "use client";
-import {
-  Typography,
-  Col,
-  Row,
-  Button,
-  Space,
-  Alert,
-  Tooltip,
-  QRCode,
-} from "antd";
+import { Typography, Col, Row, Button, Space, Alert, Tooltip } from "antd";
 import { useMatchMedia } from "./hooks/useMatchMedia";
 
 import styles from "./page.module.css";
@@ -55,22 +46,6 @@ const Home = () => {
   const isMobilePortrait = useMatchMedia(
     "(max-width: 767px) and (orientation: portrait)"
   );
-
-  // Download the QR code as a png file
-  const downloadQRCode = () => {
-    const canvas = document
-      .getElementById("myqrcode")
-      ?.querySelector<HTMLCanvasElement>("canvas");
-    if (canvas) {
-      const url = canvas.toDataURL();
-      const a = document.createElement("a");
-      a.download = "QRCode.png";
-      a.href = url;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
-  };
 
   return (
     <>

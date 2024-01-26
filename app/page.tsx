@@ -149,7 +149,6 @@ const Home = () => {
                       <Input
                         addonBefore="https://"
                         placeholder="Enter URL"
-                        className={styles.urlInput}
                         size="large"
                         value={originalUrl}
                         onChange={(e) => {

@@ -9,14 +9,12 @@ type FormURLProps = {
   originalUrl: string;
   setOriginalUrl: (value: string) => void;
   setShortenedUrl: (value: string) => void;
-  setCopied: (value: boolean) => void;
 };
 
 const FormURL = ({
   originalUrl,
   setOriginalUrl,
   setShortenedUrl,
-  setCopied,
 }: FormURLProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +24,6 @@ const FormURL = ({
     try {
       const result = await insertLinkToShorten(originalUrl, shortId);
       setShortenedUrl("/" + shortId);
-      setCopied(false);
     } catch (error) {
       message.error("Database connection failed!");
     } finally {

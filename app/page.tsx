@@ -13,7 +13,6 @@ const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
-  const [copied, setCopied] = useState(false);
 
   return (
     <>
@@ -41,7 +40,6 @@ const Home = () => {
                   originalUrl={originalUrl}
                   setOriginalUrl={setOriginalUrl}
                   setShortenedUrl={setShortenedUrl}
-                  setCopied={setCopied}
                 />
               </Col>
             </Row>

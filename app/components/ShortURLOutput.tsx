@@ -50,6 +50,11 @@ const ShortURLOutput = ({
     }
   };
 
+  const handleRemoveLink = () => {
+    setOriginalUrl("");
+    setShortenedUrl("");
+  };
+
   return (
     <>
       <Alert
@@ -99,10 +104,7 @@ const ShortURLOutput = ({
                 size="small"
                 shape="circle"
                 icon={<ClearOutlined />}
-                onClick={() => {
-                  setOriginalUrl("");
-                  setShortenedUrl("");
-                }}
+                onClick={handleRemoveLink}
               />
             </Tooltip>
           </Space>

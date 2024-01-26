@@ -4,7 +4,7 @@ const path = require("path");
 describe("Short link app", () => {
   it("generates a short url than can be copied, shared, visited and cleared", () => {
     cy.visit("http://localhost:3000");
-    cy.contains("Let's share links ;)");
+    cy.contains("Shorten links");
     cy.findByRole("textbox").type("https://www.google.com");
     cy.findByRole("button").click();
     cy.findByRole("button", { name: "Copy to clipboard" }).click();
@@ -27,7 +27,7 @@ describe("Short link app", () => {
     cy.contains("Not Found");
     cy.contains("Generate a short URL").click();
     // Check it navigates to the homepage
-    cy.contains("Let's share links ;)");
+    cy.contains("Shorten links");
   });
 
   it("displays error message when a input is empty", () => {
@@ -49,7 +49,7 @@ describe("Short link app", () => {
   it("visits the page in a mobile device", () => {
     cy.visit("http://localhost:3000");
     cy.viewport(375, 667);
-    cy.contains("Let's share links ;)");
+    cy.contains("Shorten links");
     cy.findByRole("textbox").type("https://www.google.com");
     cy.findByRole("button").click();
   });

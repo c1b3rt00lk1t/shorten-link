@@ -23,6 +23,7 @@ import {
 } from "@ant-design/icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import FormURL from "./components/FormURL";
+import QRCodeDownload from "./components/QRCodeDownload";
 
 const Home = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -85,13 +86,7 @@ const Home = () => {
       </Row>
       <Row justify="center" align="top" className={styles.secondHeightRow}>
         <Col>
-          <div
-            id="myqrcode"
-            className={styles.myqrcode}
-            onClick={downloadQRCode}
-          >
-            <QRCode value={originalUrl || "-"} bgColor="white" />
-          </div>
+          <QRCodeDownload originalUrl={originalUrl} />
         </Col>
       </Row>
       <Row justify="center" align="top" className={styles.thirdHeightRow}>

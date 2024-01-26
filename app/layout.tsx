@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={styles.reset}>
       <body
         className={styles.mainBackground}
-        style={{ backgroundColor: blue.at(2) }}
+        style={{ backgroundColor: blue.at(9) }}
       >
         <AntdRegistry>
           <Row
@@ -72,7 +72,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <NavBar />
             </Col>
           </Row>
-          <Row justify="center" align="middle">
+          <Row
+            justify="center"
+            align="middle"
+            style={{ backgroundColor: blue.at(2) }}
+          >
             <Col span={24}>{children}</Col>
           </Row>
           <Row justify="center" align="middle">

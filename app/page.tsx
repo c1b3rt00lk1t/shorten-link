@@ -55,6 +55,11 @@ const Home = () => {
           </Space>
         </Col>
       </Row>
+      <Row
+        justify="center"
+        align="top"
+        className={styles.fourthHeightRow}
+      ></Row>
     </>
   );
 };

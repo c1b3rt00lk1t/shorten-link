@@ -6,7 +6,11 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className={styles.Footer} style={{ backgroundColor: blue.at(9) }}>
-      <Link href="https://github.com/c1b3rt00lk1t/shorten-link" target="_blank">
+      <Link
+        href="https://github.com/c1b3rt00lk1t/shorten-link"
+        target="_blank"
+        style={{ color: blue.at(2) }}
+      >
         <GithubOutlined style={{ fontSize: "1rem" }} />{" "}
         <span>by c1b3rt00lk1t</span>
       </Link>

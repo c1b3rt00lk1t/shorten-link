@@ -3,7 +3,7 @@ import { Typography, Col, Row, Space } from "antd";
 import { blue } from "@ant-design/colors";
 import styles from "./page.module.css";
 
-const { Title } = Typography;
+const { Paragraph } = Typography;
 import { useState } from "react";
 import FormURL from "./components/FormURL";
 import QRCodeDownload from "./components/QRCodeDownload";
@@ -26,13 +26,16 @@ const Home = () => {
           <Space direction="vertical" size="middle" style={{ display: "flex" }}>
             <Row justify="center" align="middle">
               <Col span={24}>
-                <Title
-                  level={5}
-                  style={{ color: blue.at(7), textAlign: "center" }}
+                <Paragraph
+                  style={{
+                    color: blue.at(7),
+                    textAlign: "center",
+                    fontWeight: "bold",
+                  }}
                 >
                   Submit to <em>shorten</em> an url or click the generated QR to{" "}
                   <em>download</em> it
-                </Title>
+                </Paragraph>
                 <FormURL
                   originalUrl={originalUrl}
                   setOriginalUrl={setOriginalUrl}

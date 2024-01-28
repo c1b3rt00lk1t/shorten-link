@@ -32,6 +32,7 @@ The app leverages on the following technical pillars:
 - Error handling with <code>try...catch</code> blocks and "Not found" handling with <code>not-found.tsx</code>.
 - The app is build using the component library <code>Ant design</code>.
 - End-to-end testing with <code>Cypress</code> and <code>Testing library plugin</code>.
+- Optimized for performance, accessibility, best practices and SEO with <code>Lighthouse</code>.
 
 ### Code coverage
 

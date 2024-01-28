@@ -46,5 +46,5 @@ A +90% of code coverage is achieved by using an E2E test strategy with Cypress.
 The app is optimized for performance, accessibility, best practices and SEO.
 
 <p align="center">
-<img src="https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/lighthouse.png?raw=true" width="75%" >
+<img src="https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/lighthouse.png?raw=true" width="50%" >
 </p>

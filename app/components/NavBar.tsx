@@ -1,5 +1,5 @@
 "use client";
-import { Typography, Col, Row, Space } from "antd";
+import { Typography, Col, Row } from "antd";
 import { blue } from "@ant-design/colors";
 import styles from "./NavBar.module.css";
 import { ForwardOutlined } from "@ant-design/icons";

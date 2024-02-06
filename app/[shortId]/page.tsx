@@ -2,11 +2,13 @@ import { redirect } from "next/navigation";
 import { getLinkToRedirect } from "../lib/actions";
 import { notFound } from "next/navigation";
 
-export default async function Page({
-  params: { shortId },
-}: {
-  params: { shortId: string };
-}) {
+type PageProps = {
+  params: {
+    shortId: string;
+  };
+};
+
+export default async function Page({ params: { shortId } }: PageProps) {
   let url: string = "";
   try {
     const result = await getLinkToRedirect(shortId);

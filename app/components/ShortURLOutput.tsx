@@ -8,7 +8,6 @@ import {
   GlobalOutlined,
   ClearOutlined,
 } from "@ant-design/icons";
-import { blue } from "@ant-design/colors";
 
 type ShortURLOutputProps = {
   shortenedUrl: string;

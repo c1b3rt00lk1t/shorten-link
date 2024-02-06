@@ -3,7 +3,6 @@ import { Typography, Col, Row } from "antd";
 import { blue } from "@ant-design/colors";
 import styles from "./NavBar.module.css";
 import { ForwardOutlined } from "@ant-design/icons";
-import { Permanent_Marker } from "next/font/google";
 
 const { Paragraph } = Typography;
 

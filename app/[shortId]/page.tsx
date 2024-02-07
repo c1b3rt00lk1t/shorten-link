@@ -19,5 +19,7 @@ export default async function Page({ params: { shortId } }: PageProps) {
   if (!url) {
     notFound();
   }
-  redirect("https://" + url);
+  const targetURL = "https://" + url;
+  const newURL = new URL(targetURL);
+  redirect(newURL.href);
 }

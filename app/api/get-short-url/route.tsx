@@ -19,11 +19,16 @@ export async function GET(request: Request) {
   // To extract it as a whole, it cannot be done using the URLSearchParams
   const urlParam = "url=";
   let urlParamIndex = urlString.indexOf(urlParam) + urlParam.length;
-  const originalUrl = decodeURIComponent(urlString.substring(urlParamIndex));
+  const originalUrl =
+    process.env.NODE_ENV === "development"
+      ? urlString.substring(urlParamIndex)
+      : decodeURIComponent(urlString.substring(urlParamIndex));
 
   // Validate resulting URL
   if (!originalUrl || !validateURL(originalUrl)) {
-    return new Response("Invalid URL: " + originalUrl, { status: 400 });
+    return new Response(process.env.NODE_ENV + " Invalid URL: " + originalUrl, {
+      status: 400,
+    });
   }
 
   // Remove the protocol from the URL
@@ -38,7 +43,13 @@ export async function GET(request: Request) {
     // Insert the URL into the database
     const result = await insertLinkToShorten(replacedUrl, shortId);
     if (result.rowCount === 1) {
-      return new Response(process.env.NEXT_PUBLIC_BASE_URL + "/" + shortId);
+      return new Response(
+        process.env.NODE_ENV +
+          " " +
+          process.env.NEXT_PUBLIC_BASE_URL +
+          "/" +
+          shortId
+      );
     } else {
       return new Response("Database connection failed!", { status: 500 });
     }

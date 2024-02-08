@@ -22,7 +22,7 @@ export async function GET(request: Request) {
   const originalUrl =
     process.env.NODE_ENV === "development"
       ? urlString.substring(urlParamIndex)
-      : decodeURIComponent(urlString.substring(urlParamIndex));
+      : decodeURI(urlString.substring(urlParamIndex));
 
   // Validate resulting URL
   if (!originalUrl || !validateURL(originalUrl)) {
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
 
   // Encoded URL
   const urlParts = replacedUrl.split("?");
-  const encodedUrl = `${encodeURIComponent(urlParts[0])}?${urlParts[1]}`;
+  const encodedUrl = `${encodeURI(urlParts[0])}?${urlParts[1]}`;
 
   try {
     // Insert the URL into the database
@@ -55,7 +55,12 @@ export async function GET(request: Request) {
           " " +
           process.env.NEXT_PUBLIC_BASE_URL +
           "/" +
-          shortId
+          shortId +
+          " " +
+          "DecodedURL: " +
+          originalUrl +
+          " EncodedURL: " +
+          encodedUrl
       );
     } else {
       return new Response("Database connection failed!", { status: 500 });

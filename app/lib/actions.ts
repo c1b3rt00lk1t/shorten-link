@@ -20,3 +20,9 @@ export async function getLinkToRedirect(shortId: string) {
   const result = await query;
   return result;
 }
+
+export async function cleanOldShortenLinks() {
+  const query = sql`DELETE FROM shorten_link WHERE created_at < NOW() - INTERVAL '1 DAY'`;
+  const result = await query;
+  return result;
+}

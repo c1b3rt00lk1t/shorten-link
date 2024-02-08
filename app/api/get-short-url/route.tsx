@@ -39,14 +39,10 @@ export async function GET(request: Request) {
   // Generate short URL
   const shortId = nanoid(8);
 
-  // Encoded URL
-  const urlParts = replacedUrl.split("?");
-  const encodedUrl = `${encodeURI(urlParts[0])}?${urlParts[1]}`;
-
   try {
     // Insert the URL into the database
     const result = await insertLinkToShorten(
-      process.env.NODE_ENV === "development" ? replacedUrl : encodedUrl,
+      process.env.NODE_ENV === "development" ? replacedUrl : replacedUrl,
       shortId
     );
     if (result.rowCount === 1) {
@@ -58,9 +54,10 @@ export async function GET(request: Request) {
           shortId +
           " " +
           "DecodedURL: " +
-          originalUrl +
-          " EncodedURL: " +
-          encodedUrl
+          originalUrl
+        // +
+        // " EncodedURL: " +
+        // encodedUrl
       );
     } else {
       return new Response("Database connection failed!", { status: 500 });

@@ -15,6 +15,14 @@ const validateURL = (url: string) => {
 };
 
 export async function GET(request: Request) {
+  // Check for API key in the request headers
+  const apiKey = request.headers.get("api-key");
+  const validApiKey = process.env.API_KEY_UPLOADER;
+
+  if (!apiKey || apiKey !== validApiKey) {
+    return new Response("Invalid API key", { status: 403 });
+  }
+
   // Extract the query from the request URL
   const urlString = request.url;
 
@@ -34,6 +42,11 @@ export async function GET(request: Request) {
     });
   }
 
+  // Reencode the URL
+  const uploaderBaseURL = process.env.UPLOADER_BASE_URL!;
+  const encodedUrl =
+    uploaderBaseURL + encodeURI(originalUrl.split(uploaderBaseURL)[1]);
+
   // Remove the protocol from the URL
   const replacedUrl = originalUrl
     .replace("https://", "")
@@ -45,7 +58,7 @@ export async function GET(request: Request) {
   try {
     // Insert the URL into the database
     const result = await insertLinkToShorten(
-      process.env.NODE_ENV === "development" ? replacedUrl : replacedUrl,
+      process.env.NODE_ENV === "development" ? replacedUrl : encodedUrl,
       shortId
     );
     if (result.rowCount === 1) {

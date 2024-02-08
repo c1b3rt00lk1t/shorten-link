@@ -13,10 +13,15 @@ const validateURL = (url: string) => {
 
 export async function GET(request: Request) {
   // Extract the query from the request URL
-  const query = new URL(request.url).searchParams;
-  const originalUrl = query.get("url");
+  const urlString = request.url;
 
-  // Validate URL
+  // The url can contain other query parameters
+  // To extract it as a whole, it cannot be done using the URLSearchParams
+  const urlParam = "url=";
+  let urlParamIndex = urlString.indexOf(urlParam) + urlParam.length;
+  const originalUrl = urlString.substring(urlParamIndex);
+
+  // Validate resulting URL
   if (!originalUrl || !validateURL(originalUrl)) {
     return new Response("Invalid URL", { status: 400 });
   }
@@ -33,7 +38,7 @@ export async function GET(request: Request) {
     // Insert the URL into the database
     const result = await insertLinkToShorten(replacedUrl, shortId);
     if (result.rowCount === 1) {
-      return new Response(shortId);
+      return new Response(process.env.NEXT_PUBLIC_BASE_URL + "/" + shortId);
     } else {
       return new Response("Database connection failed!", { status: 500 });
     }

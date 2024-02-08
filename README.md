@@ -33,6 +33,7 @@ The app leverages on the following technical pillars:
 - The app is build using the component library <code>Ant design</code>.
 - End-to-end testing with <code>Cypress</code> and <code>Testing library plugin</code>.
 - Optimized for performance, accessibility, best practices and SEO with <code>Lighthouse</code>.
+- The app exposes an API endpoint with a <code>Route Handler</code> to get a shorten link from the <a href='https://github.com/c1b3rt00lk1t/press-uploader-prototype'>Uploader app</a> to be consumed later by <a href='https://github.com/c1b3rt00lk1t/press-reader-prototype'>Reader app</a> when sharing links.
 
 ### Code coverage
 

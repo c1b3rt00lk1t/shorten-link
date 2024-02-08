@@ -30,6 +30,7 @@ export async function GET(request: Request) {
   // To extract it as a whole, it cannot be done using the URLSearchParams
   const urlParam = "url=";
   let urlParamIndex = urlString.indexOf(urlParam) + urlParam.length;
+  // In prod the url sent as param is encoded and needs to be decoded
   const originalUrl =
     process.env.NODE_ENV === "development"
       ? urlString.substring(urlParamIndex)
@@ -43,9 +44,11 @@ export async function GET(request: Request) {
   }
 
   // Reencode the URL
+  // In PRD the part of the url corresponding to the path in firebase needs to be encoded again
   const uploaderBaseURL = process.env.UPLOADER_BASE_URL!;
   const encodedUrl =
-    uploaderBaseURL + encodeURI(originalUrl.split(uploaderBaseURL)[1]);
+    uploaderBaseURL +
+    encodeURI(originalUrl.split(uploaderBaseURL)[1].replace(/\//g, "%2F"));
 
   // Remove the protocol from the URL
   const replacedUrl = originalUrl

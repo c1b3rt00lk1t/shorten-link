@@ -23,7 +23,7 @@ export async function GET(request: Request) {
 
   // Validate resulting URL
   if (!originalUrl || !validateURL(originalUrl)) {
-    return new Response("Invalid URL", { status: 400 });
+    return new Response("Invalid URL: " + originalUrl, { status: 400 });
   }
 
   // Remove the protocol from the URL

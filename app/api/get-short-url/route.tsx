@@ -44,11 +44,11 @@ export async function GET(request: Request) {
   }
 
   // Reencode the URL
-  // In PRD the part of the url corresponding to the path in firebase needs to be encoded again
+  // In PRD the part of the url corresponding to the path in firebase needs to be encoded again, with special care of slashes corresponding to the firebase path
   const uploaderBaseURL = process.env.UPLOADER_BASE_URL!;
   const encodedUrl =
     uploaderBaseURL +
-    encodeURI(originalUrl.split(uploaderBaseURL)[1].replace(/\//g, "%2F"));
+    encodeURI(originalUrl.split(uploaderBaseURL)[1]).replace(/\//g, "%2F");
 
   // Remove the protocol from the URL
   const replacedUrl = originalUrl

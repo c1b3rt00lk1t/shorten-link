@@ -13,6 +13,12 @@ Web app providing short links and QR code for an input URL. When the app is acce
 
 A working version of the mobile/desktop app can be found <a href='https://shorten-link-chi.vercel.app/'>here</a>.
 
+Check it in your mobile device scanning the QR code:
+
+<p align="center">
+<img src="https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/qrcode_shorten_links.png?raw=true" width="20%" height="20%" >
+</p>
+
 ### Basic usage
 
 - After cloning the repo: <code>$ npm install</code>

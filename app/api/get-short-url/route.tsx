@@ -22,7 +22,7 @@ export async function GET(request: Request) {
   const originalUrl =
     process.env.NODE_ENV === "development"
       ? urlString.substring(urlParamIndex)
-      : decodeURI(urlString.substring(urlParamIndex));
+      : decodeURIComponent(urlString.substring(urlParamIndex));
 
   // Validate resulting URL
   if (!originalUrl || !validateURL(originalUrl)) {

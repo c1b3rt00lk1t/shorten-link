@@ -16,7 +16,7 @@ A working version of the mobile/desktop app can be found <a href='https://shorte
 Check it in your mobile device scanning the QR code:
 
 <p align="center">
-<img src="https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/qrcode_shorten_links.png?raw=true" width="20%" height="20%" >
+<img src="https://github.com/c1b3rt00lk1t/shorten-link/blob/main/images/qrcode_shorten_links.png?raw=true" width="15%" height="15%" >
 </p>
 
 ### Basic usage

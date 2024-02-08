@@ -39,9 +39,16 @@ export async function GET(request: Request) {
   // Generate short URL
   const shortId = nanoid(8);
 
+  // Encoded URL
+  const urlParts = replacedUrl.split("?");
+  const encodedUrl = `${encodeURIComponent(urlParts[0])}?${urlParts[1]}`;
+
   try {
     // Insert the URL into the database
-    const result = await insertLinkToShorten(replacedUrl, shortId);
+    const result = await insertLinkToShorten(
+      process.env.NODE_ENV === "development" ? replacedUrl : encodedUrl,
+      shortId
+    );
     if (result.rowCount === 1) {
       return new Response(
         process.env.NODE_ENV +

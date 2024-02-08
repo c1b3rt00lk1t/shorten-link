@@ -19,7 +19,7 @@ export async function GET(request: Request) {
   // To extract it as a whole, it cannot be done using the URLSearchParams
   const urlParam = "url=";
   let urlParamIndex = urlString.indexOf(urlParam) + urlParam.length;
-  const originalUrl = urlString.substring(urlParamIndex);
+  const originalUrl = decodeURIComponent(urlString.substring(urlParamIndex));
 
   // Validate resulting URL
   if (!originalUrl || !validateURL(originalUrl)) {

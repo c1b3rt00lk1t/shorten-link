@@ -1,7 +1,8 @@
 import type { NextRequest } from "next/server";
 import { cleanOldShortenLinks } from "../../../lib/actions";
 
-export async function GET(request: NextRequest) {
+/* Route handler to be executed by a cron job to clean up the database */
+export async function GET(request: NextRequest): Promise<Response> {
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return new Response("Unauthorized", {

@@ -65,19 +65,20 @@ export async function GET(request: Request) {
       shortId
     );
     if (result.rowCount === 1) {
-      return new Response(
-        process.env.NODE_ENV +
-          " " +
-          process.env.NEXT_PUBLIC_BASE_URL +
-          "/" +
-          shortId +
-          " " +
-          "DecodedURL: " +
-          originalUrl
-        // +
-        // " EncodedURL: " +
-        // encodedUrl
-      );
+      const responseData = {
+        status: "success",
+        message: "ShortId successfully retrieved",
+        data: {
+          shortURL: process.env.NEXT_PUBLIC_BASE_URL + "/" + shortId,
+          shortId,
+        },
+      };
+      return new Response(JSON.stringify(responseData), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } else {
       return new Response("Database connection failed!", { status: 500 });
     }

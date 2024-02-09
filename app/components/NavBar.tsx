@@ -32,7 +32,7 @@ const NavBar = () => {
           </Title>
 
           <Paragraph style={{ color: blue[1] }}>
-            No adds, no tracking, no cookies... only links :)
+            No adds, no tracking, no cookies... simply links :)
           </Paragraph>
         </Col>
       </Row>

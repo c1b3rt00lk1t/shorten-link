@@ -7,7 +7,7 @@
 ### Basic description
 
 TYPESCRIPT · NEXT · ANTD COMPONENTS · CSS MODULES · CYPRESS · TESTING LIBRARY  
-Web app providing short links and QR code for an input URL. When the app is accessed with the short link, it redirects the user to the original URL. If the short link does not exist, the app displays a 404 page inviting the user to create a new short link.
+Web app providing short links and QR code for an input URL. When the app is accessed with the short link, it redirects the user to the original URL. If the short link does not exist, the app displays a 404 page inviting the user to create a new short link. The app also exposes an API endpoint.
 
 ### Available demo online
 
